@@ -8,7 +8,7 @@
 import scrapy
 
 
-class AmazonItem(scrapy.Item):
+class AmazonMacItem(scrapy.Item):
 
     good_name = scrapy.Field()
     good_url = scrapy.Field()

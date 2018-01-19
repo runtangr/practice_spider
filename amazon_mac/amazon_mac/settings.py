@@ -9,10 +9,10 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'amazon'
+BOT_NAME = 'amazon_mac'
 
-SPIDER_MODULES = ['amazon.spiders']
-NEWSPIDER_MODULE = 'amazon.spiders'
+SPIDER_MODULES = ['amazon_mac.spiders']
+NEWSPIDER_MODULE = 'amazon_mac.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -22,7 +22,7 @@ NEWSPIDER_MODULE = 'amazon.spiders'
 ROBOTSTXT_OBEY = True
 
 ITEM_PIPELINES = {
-   'amazon.pipelines.AmazonPipeline': 300,
+   'amazon_mac.pipelines.AmazonPipeline': 300,
 }
 
 USER_AGENT_LIST = [
@@ -46,6 +46,6 @@ USER_AGENT_LIST = [
     "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24"
 ]
 DOWNLOADER_MIDDLEWARES = {
-    'amazon.spiders.user_agent.RandomUserAgentMiddleware': 400,
+    'amazon_mac.spiders.user_agent.RandomUserAgentMiddleware': 400,
     'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware': None,
 }

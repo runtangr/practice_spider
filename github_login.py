@@ -21,22 +21,24 @@ data = {
     'password': input("password:")
 }
 
+# login
 r_login = s.post(SESSION_URL, data=data)
 tree_login = html.fromstring(r_login.text)
 
-# Load all repos
+# get repos cursor
 el_repos_cursor = tree_login.xpath('//input[@name="your_repos_cursor"]')[0]
 repos_cursor = el_repos_cursor.attrib['value']
 
+# get repos list
 repos_data = {
             'utf8': '✓',
             'your_repos_cursor': repos_cursor
             }
-r_more_repo = s.get(REPOS_URL.format(repos_cursor), params=repos_data)
-tree_more_repo = html.fromstring(r_more_repo.text)
-more_repo_list = tree_more_repo.xpath('//a[@itemprop="name codeRepository"]')
-for more_data in more_repo_list:
-    print(more_data.text)
+r_repo = s.get(REPOS_URL.format(repos_cursor), params=repos_data)
+tree_repo = html.fromstring(r_repo.text)
+repo_list = tree_repo.xpath('//a[@itemprop="name codeRepository"]')
+for repo_data in repo_list:
+    print(repo_data.text)
 
 
 

@@ -1,10 +1,10 @@
 import scrapy
-from amazon.items import AmazonItem
+from amazon_mac.items import AmazonMacItem
 from scrapy.http import Request
 
 
 class AmazonSpider(scrapy.spiders.Spider):
-    name = "amazon"
+    name = "amazon_mac"
     download_delay = 6
     allowed_domains = ["amazon.cn"]
     start_urls = [
@@ -14,10 +14,8 @@ class AmazonSpider(scrapy.spiders.Spider):
     def parse(self, response):
         goods = response.xpath("//li[re:match(@class, 's-result-item')]")
 
-        print("goods--------", goods)
-
         for good in goods:
-            item = AmazonItem()
+            item = AmazonMacItem()
 
             good_name = good.xpath("div/div/div/a/h2/text()").extract()
             good_url = good.xpath("div/div/div/div/a/@href").extract()
@@ -28,9 +26,6 @@ class AmazonSpider(scrapy.spiders.Spider):
                 "div/div/a[@class='a-size-small a-link-normal a-text-normal']/text()").extract()
             good_commentsurl = good.xpath(
                 "div/div/a[@class='a-size-small a-link-normal a-text-normal']/@href").extract()
-
-            for n in good_name:
-                print(n)
 
             item["good_name"] = [n for n in good_name]
             item["good_url"] = [n for n in good_url]

@@ -1,4 +1,4 @@
-from amazon.settings import USER_AGENT_LIST
+from amazon_mac.settings import USER_AGENT_LIST
 import random
 from scrapy import log
 

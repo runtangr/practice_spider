@@ -43,4 +43,4 @@ livestatus.log
 .project
 .pydevproject
 .idea/
-amazon/amazon.json
+amazon_mac/amazon_mac.json
