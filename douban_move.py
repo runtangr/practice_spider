@@ -7,7 +7,7 @@ def selenium_get():
     driver = webdriver.Chrome()
     driver.get(URL)
     el = driver.find_element_by_xpath('//div[@id="app"]/div/div/button')
-
+    el.click()
     el3 = driver.find_elements_by_xpath('//div[@data-scroll="limited"]/ul/li/a')
     for data in el3:
         print(data.text)
