@@ -6,8 +6,8 @@ def selenium_get():
     URL = "https://movie.douban.com/annual/2017#1"
     driver = webdriver.Chrome()
     driver.get(URL)
-    el = driver.find_element_by_xpath('//div[@id="app"]/div/div/button')
-    el.click()
+    # 隐式等待5秒，可以自己调节
+    driver.implicitly_wait(5)
     el3 = driver.find_elements_by_xpath('//div[@data-scroll="limited"]/ul/li/a')
     for data in el3:
         print(data.text)
